@@ -16,6 +16,7 @@ gem 'rake'
 gem 'shotgun'
 gem 'faker'
 gem 'pry'
+gem 'pry-coolline'
 gem 'nyan-cat-formatter'
 gem 'bcrypt'
 
