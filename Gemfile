@@ -17,6 +17,7 @@ gem 'shotgun'
 gem 'faker'
 gem 'pry'
 gem 'nyan-cat-formatter'
+gem 'bcrypt'
 
 group :test do
   gem 'shoulda-matchers'
