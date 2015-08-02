@@ -19,8 +19,7 @@ post '/sessions' do
 end
 
 #--------------LOGOUT-----------------
-delete '/session/:id' do
-	@user = User.find_by(username: params[:username])
-	logout(@user)
+delete '/sessions' do
+	logout
 	redirect '/'
 end

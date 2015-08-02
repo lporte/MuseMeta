@@ -40,7 +40,48 @@ end
 
 get '/users/:id' do
 	@user = User.find(params[:id])
+
 	erb :'users/show'
 end
+
 #------------------UPDATE------------------
+
+put '/users/:id' do
+  @user = User.find(params[:id])
+  if @user
+    @user.update_attributes(username: params[:username],
+                     password: params[:password_hash0],
+                     email: params[:email],
+                     first_name: params[:first_name],
+                     last_name: params[:last_name],
+                     city: params[:city],
+                     state: params[:state],
+                     bio: params[:bio],
+                     avatar: params[:avatar_url]
+                     )
+
+    redirect "/users/#{params[:id]}"
+  else
+
+    redirect "/users/#{params[:id]}"
+  end
+end
+
+get '/users/:id/tweets' do
+  redirect to "/users/#{params[:id]}"
+end
+
 #------------------DESTROY-----------------
+
+get '/users/:id/delete' do
+  @user = User.find(params[:id])
+  erb :'/users/delete'
+end
+
+delete '/users/:id' do
+  @user = User.find(params[:id])
+  logout
+  User.destroy(@user.id)
+  redirect '/'
+end
+
