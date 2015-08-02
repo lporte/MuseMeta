@@ -1,0 +1,38 @@
+<h1>Sign Up:</h1>
+
+<!-- These are not showing up - why? -->
+<% if @user.errors.any? %>
+  <div id="errors">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form class="signup" action="/users" method="post">
+  	<label for="username">Username:</label>
+  	<input type="text" name="username" placeholder="username" required><br>
+  	<label for="password_hash0">Password:</label>
+  	<input type="password" name="password_hash0" placeholder="password" required minlength="6"><br>
+  	<label for="password_hash1">Re-Type Password:</label>
+  	<input type="password" name="password_hash1" placeholder="password" required minlength="6"><br>
+  	<label for="first_name">First Name:</label>
+  	<input type="text" name="first_name" placeholder="First Name" /><br>
+  	<label for="last_name">Last Name:</label>
+  	<input type="text" name="last_name" placeholder="Last Name" /><br>
+  	<label for="email">Email Address:</label>
+  	<input type="email" name="email" placeholder="Email" required /><br>
+  	<label for="city">City:</label>
+  	<input type="text" name="city" placeholder="City" /><br>
+  	<label for="state">State:</label>
+  	<input type="text" name="state" placeholder="State" /><br>
+  	<label for="bio">Bio:</label>
+  	<textarea name="bio" id="" cols="30" rows="10" placeholder="Bio" maxlength="400"></textarea><br>
+  	<label for="avatar">Avatar url:</label>
+  	<input type="url" name="avatar_url" placeholder="http://example.org/123"><br>
+  <input type="submit" value="Sign Up" class="button">
+</form>
