@@ -1,10 +1,20 @@
-<!-- PUBLIC VIEW -->
-<!-- button login/sign up -->
-<h1>Welcome!</h1>
-
+<% if logged_in? %>
 <!-- PRIVATE VIEW -->
 <!-- OR button sign out  -->
-<h1>Welcome back!</h1>
+	<h1>Welcome back!</h1>
+	<form action="/sessions" method="post">
+	  <input name="_method" type="hidden" value="delete">
+	  <input type="submit" value="logout" class="button">
+	</form>
+
+<% else %>
+<!-- PUBLIC VIEW -->
+<!-- button login/sign up -->
+	<h1>Welcome!</h1>
+	<a href="/users/new" class="button">Sign Up</a><br>
+	<a href="/sessions/new" class="button">Sign In</a>
+<% end %>
+
 
 
 

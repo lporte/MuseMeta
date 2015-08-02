@@ -2,6 +2,6 @@
 <% @users.each do |user| %>
   <p>
   <img class="avatar" src="<%= user.avatar %>">
-  <%= user.username %>
+  <a href="/users/<%= user.id %>"><%= user.username %></a>
   </p>
 <% end %>
