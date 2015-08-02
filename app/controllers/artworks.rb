@@ -1,3 +1,4 @@
+#----------------SHOW ALL-----------------
 
 get '/artworks' do
 	@artworks = Artwork.all.order(id: :asc)
@@ -13,8 +14,8 @@ end
 
 post '/artworks' do
 	@artwork = Artwork.new(
-		title: params[:title]
-		source: params[:source]
+		title: params[:title],
+		source: params[:source],
 		date: params[:date]
 		)
 	if @artwork.save
