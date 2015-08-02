@@ -8,11 +8,12 @@ post '/sessions' do
 	@user = User.authenticate(params[:username], params[:password_hash0])
 	if @user
 	  login(@user)
+
 	  redirect "/users/#{@user.id}"
 	else
+	  # TO DO:  User errors are not rendering...
 	  @error = "Username or Password is Incorrect"
-	  p @error
-	  p "*" * 100
+
 	  redirect 'sessions/new'
 	end
 end
