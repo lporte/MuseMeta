@@ -72,10 +72,6 @@ put '/users/:id' do
   end
 end
 
-get '/users/:id/tweets' do
-  redirect to "/users/#{params[:id]}"
-end
-
 #------------------DESTROY-----------------
 
 get '/users/:id/delete' do
