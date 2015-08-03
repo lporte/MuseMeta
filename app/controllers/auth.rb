@@ -26,13 +26,13 @@ post '/users' do
 			login(@user)
 			redirect "/users/#{@user.id}"
 		else
-			p @user
-			p "*" * 100
-			redirect '/users/new'
+			@error = "Count not authenticate information.  Try again."
+			redirect '/'
 		end
 	else
 		# TO DO:  User errors are not rendering... why?
-		redirect '/users/new'
+      @error = "Count not authenticate information.  Try again."
+    redirect '/'
 	end
 end
 
@@ -45,6 +45,11 @@ get '/users/:id' do
 end
 
 #------------------UPDATE------------------
+
+get '/users/:id/edit' do
+  @user = User.find(params[:id])
+  erb :"/users/edit"  
+end
 
 put '/users/:id' do
   @user = User.find(params[:id])

@@ -2,7 +2,11 @@
 
 get '/artworks' do
 	@artworks = Artwork.all.order(id: :asc)
-	erb :artworks
+	if logged_in?
+		erb :'artworks/all'
+	else
+		redirect '/'
+	end
 end
 
 #-----------------CREATE-----------------

@@ -9,7 +9,7 @@ post '/sessions' do
 	if @user
 	  login(@user)
 
-	  redirect "/users/#{@user.id}"
+	  redirect "/"
 	else
 	  # TO DO:  User errors are not rendering...
 	  @error = "Username or Password is Incorrect"
