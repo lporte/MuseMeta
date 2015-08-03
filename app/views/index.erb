@@ -1,20 +1,101 @@
 <% if logged_in? %>
 <!-- PRIVATE VIEW -->
 <!-- OR button sign out  -->
-	<h1>Welcome back!</h1>
-	<form action="/sessions" method="post">
-	  <input name="_method" type="hidden" value="delete">
-	  <input type="submit" value="logout" class="button">
-	</form>
+	<h1 class="main">Welcome Back, <%= current_user.username %></h1>
+
+        <div class="row">
+          <div class="col-lg-4 col-lg-offset-2">
+            <!-- THIS NUMBER IS A LIE.  NEED TO GET ARTWORK. -->
+            <h3 class="white">Search 100,000 works of art:</h3>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search</button>
+              </span>
+              <input type="text" class="form-control" placeholder="Search for...">
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-lg-4">
+            <!-- THIS IS ALSO A LIE.  I AM SILL WORKING THIS OUT. -->
+             <h3 class="white">Search by an image:</h3>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Upload a File</button>
+              </span>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
 
 <% else %>
 <!-- PUBLIC VIEW -->
 <!-- button login/sign up -->
-	<h1>Welcome!</h1>
-	<a href="/users/new" class="button">Sign Up</a><br>
-	<a href="/sessions/new" class="button">Sign In</a>
+	<h1 class="main">Museumist</h1>
+
+	<div class="col-md-6 col-md-offset-3 center">
+        <h3 class="white">A tiny museum database</h3>
+    </div>
+    
+		<div class="col-md-6 col-md-offset-3 center">
+       
+        <div id="js-flip" class="flip">
+            <div class="card">
+                <div class="face front">
+                    <h2 class="white">Sign In</h2>
+                    <% if @error %>
+                      <div id="errors">
+                        <%= @error %>
+                      </div>
+                    <% end %>
+                
+                    <form class= "login" action="/sessions" method="post">
+                        <label for="username">Username:</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                        </div>
+                        <label for="username">Password:</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password_hash0" placeholder="Password" required minlength="6">
+                        </div>
+                        <input type="submit" value="Sign In" class="btn btn-lg btn-block btn-outline" >
+                    </form>
+                        <p class="white signup_message">Not a Member Yet? <button class="btn white flip-it">Sign Up</button> Here.</p>
+                </div>
+
+                <div class="face back">
+                <!-- TO CLEAN UP.  TOO CROWDED  -->
+                    <h2 class="white">Sign Up</h2>
+                    <form class="form-inline" action="/users" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                        </div>             
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password_hash0" placeholder="Password" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password_hash1" placeholder="Re-Enter Password" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="city" placeholder="City" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="state" placeholder="State" />
+                        </div>
+                        <div class="form-group">
+                            <textarea name="bio" class="form-control" cols="45" rows="3" placeholder="Bio (max 140 chars)" maxlength="140"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="url" class="form-control" name="avatar_url" placeholder="Avatar Url ex) https://www.example.org">
+                        </div>
+                        <input type="submit" value="Sign Up" class="btn btn-lg btn-outline signup">
+                    </form>
+                    <button class="btn white flip-it">Back</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 <% end %>
-
-
-
-
