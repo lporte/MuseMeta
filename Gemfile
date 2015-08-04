@@ -19,6 +19,8 @@ gem 'pry'
 gem 'pry-coolline'
 gem 'nyan-cat-formatter'
 gem 'bcrypt'
+gem 'httparty'
+gem 'dotenv'
 
 group :test do
   gem 'shoulda-matchers'
@@ -29,6 +31,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'awesome_print'
   gem 'factory_girl'
   gem 'faker'
 end
