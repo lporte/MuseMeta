@@ -3,6 +3,17 @@
 <!-- OR button sign out  -->
 	<h1 class="main">Welcome Back, <%= current_user.username %></h1>
 
+
+    <!-- search -->
+    <form class="navbar-form navbar-left search-bar" role="search" action="/search" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="search for..." name="search_request" required>
+      </div>
+      <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+    <!-- end search -->
+
+
         <div class="row">
           <div class="col-lg-4 col-lg-offset-2">
             <!-- THIS NUMBER IS A LIE.  NEED TO GET ARTWORK. -->
@@ -46,9 +57,8 @@
                         <%= @error %>
                       </div>
                     <% end %>
-                
-                    <form class= "login" action="/sessions" method="post">
-                        <label for="username">Username:</label>
+                    <form action="/sessions" method="post">
+                       <label for="username">Username: </label>
                         <div class="form-group">
                             <input type="text" class="form-control" name="username" placeholder="Username" required>
                         </div>
@@ -58,7 +68,9 @@
                         </div>
                         <input type="submit" value="Sign In" class="btn btn-lg btn-block btn-outline" >
                     </form>
+
                         <p class="white signup_message">Not a Member Yet? <button class="btn white flip-it">Sign Up</button> Here.</p>
+
                 </div>
 
                 <div class="face back">
