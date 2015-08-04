@@ -1,13 +1,17 @@
 <div class="body-div">
-
-<ul class="list-group col-xs-6 col-xs-offset-3" id="results">
-<p><%= "Your search results:" %></p>
-<% @artwork.each do |artwork| %>
-	<a href="/artwork/<%= artwork.id %>"><li class="list-group-item result"><span class="center-text"><%= artwork.title %> by <%= artwork.artist %></span></li></a>
-<% end %>
-<% if @artwork.empty? %>
-<li>No results found.</li>
+	<ul class="list-group col-xs-6 col-xs-offset-3" id="results">
+	<p class="white"> Your search results: </p>
+	<% @results.each do |result| %>
+	  <% result.attributes.each do |attr, val| %>
+	  	<% if attr.include?("img") %>
+	  	  <img src="<%= val %>" >
+	  	<% end %>
+	  	<p class="white">'<%= attr %>: <%= val %>'</p>
+		<% end %>
 	<% end %>
-</ul>
 
+	<% if @results.nil? %>
+		<h3>No results found.</h3>
+	<% end %>
+		</ul>
 </div>
