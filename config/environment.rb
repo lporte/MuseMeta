@@ -22,7 +22,12 @@ require 'erb'
 require 'faker'
 require 'pry'
 require 'bcrypt'
+require 'httparty'
+require 'dotenv'
+require 'awesome_print'
 
+# Loads your env variables - need before app loads
+Dotenv.load
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
