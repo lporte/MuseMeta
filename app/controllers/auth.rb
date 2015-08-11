@@ -12,28 +12,22 @@ end
 
 post '/users' do
 	@user = User.new(username: params[:username],
-                     password: params[:password_hash0],
-                     email: params[:email],
-                     first_name: params[:first_name],
-                     last_name: params[:last_name],
-                     city: params[:city],
-                     state: params[:state],
-                     bio: params[:bio],
-                     avatar: params[:avatar_url]
-                     )
-	if params[:password_hash0] == params[:password_hash1]
-		if @user.save!
-			login(@user)
-			redirect "/users/#{@user.id}"
-		else
-			@error = "Count not authenticate information.  Try again."
-			redirect '/'
-		end
-	else
-		# TO DO:  User errors are not rendering... why?
-      @error = "Count not authenticate information.  Try again."
-    redirect '/'
-	end
+    password: params[:password_hash0],
+    email: params[:email],
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    city: params[:city],
+    state: params[:state],
+    bio: params[:bio],
+    avatar: params[:avatar_url]
+    )
+	if params[:password_hash0] == params[:password_hash1] && @user.save
+    login(@user)
+    redirect "/users/#{@user.id}"
+  else
+    @error = "Could not authenticate information.  Try again."
+    erb :index
+  end
 end
 
 #-------------------READ-------------------
@@ -53,30 +47,31 @@ end
 
 put '/users/:id' do
   @user = User.find(params[:id])
+  p params
+  p "*"*100
   if @user
     @user.update_attributes(username: params[:username],
-                     password: params[:password_hash0],
-                     email: params[:email],
-                     first_name: params[:first_name],
-                     last_name: params[:last_name],
-                     city: params[:city],
-                     state: params[:state],
-                     bio: params[:bio],
-                     avatar: params[:avatar_url]
-                     )
-
-    redirect "/users/#{params[:id]}"
-  else
-
-    redirect "/users/#{params[:id]}"
+      password: params[:password_hash0],
+      email: params[:email],
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      city: params[:city],
+      state: params[:state],
+      bio: params[:bio],
+      avatar: params[:avatar_url]).save!
   end
+  redirect "/users/#{params[:id]}"
 end
 
 #------------------DESTROY-----------------
 
 get '/users/:id/delete' do
-  @user = User.find(params[:id])
-  erb :'/users/delete'
+  unless !current_user
+    @user = User.find(params[:id])
+    erb :'/users/delete'
+  end
+
+  redirect '/'
 end
 
 delete '/users/:id' do

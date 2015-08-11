@@ -12,9 +12,8 @@ post '/sessions' do
 	  redirect "/"
 	else
 	  # TO DO:  User errors are not rendering...
-	  @error = "Username or Password is Incorrect"
-
-	  redirect 'sessions/new'
+	  @error = "Oh Noes:  Username or Password is Incorrect"
+	  erb :'index'
 	end
 end
 
