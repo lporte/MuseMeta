@@ -44,15 +44,15 @@ class MuseumStuff
 
 	base_uri 'https://api.collection.cooperhewitt.org/rest/'
 
-	# def get_pictures 
-	# 	response = self.class.get("/",
-	# 		:query => { 
-	# 			:method => "cooperhewitt.objects.getImages",
-	# 			:access_token => ENV["ACCESS_TOKEN"],
-	# 			:object_id => "18667413" 
-	# 		}
-	# 	)
-	# end
+	def get_pictures 
+		response = self.class.get("/",
+			:query => { 
+				:method => "cooperhewitt.objects.getImages",
+				:access_token => ENV["ACCESS_TOKEN"],
+				:object_id => "18667413" 
+			}
+		)
+	end
 
 	def get_items_on_display
 		response = self.class.get("/",
@@ -70,12 +70,22 @@ ap test_artwork.get_items_on_display[:objects][0].each do |k, v|
 	ap test_artwork.get_items_on_display[:objects][0][k][:title]
 end
 
-# test_artwork.get_pictures["images"][0].each do |k, v|
-# 	ap test_artwork.get_pictures["images"][0][k]["url"]
-# end
+test_artwork.get_pictures["images"][0].each do |k, v|
+	ap test_artwork.get_pictures["images"][0][k]["url"]
+end
 
 # curl -X GET 'https://api.collection.cooperhewitt.org/rest/?
 # method=cooperhewitt.objects.getImages&
 # access_token=8983a6ba36768682cfcda354deb415e2&
 # object_id=18667413'
+# class MetMuseum
+# 	include HTTParty
 
+# 	base_uri 'scrapi.org'
+# 	def get_artwork
+# 		response = self.class.get('/object/123?fields=title,whoList/who/name')
+# 	end
+# end
+
+# test = MetMuseum.new
+# ap test.get_artwork
