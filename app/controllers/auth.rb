@@ -58,7 +58,7 @@ put '/users/:id' do
       city: params[:city],
       state: params[:state],
       bio: params[:bio],
-      avatar: params[:avatar_url]).save!
+      avatar: params[:avatar_url])
   end
   redirect "/users/#{params[:id]}"
 end
@@ -70,14 +70,15 @@ get '/users/:id/delete' do
     @user = User.find(params[:id])
     erb :'/users/delete'
   end
-
   redirect '/'
 end
 
 delete '/users/:id' do
-  @user = User.find(params[:id])
-  logout
-  User.destroy(@user.id)
+  unless !current_user
+    @user = User.find(params[:id])
+    logout
+    User.destroy(@user.id)
+  end
   redirect '/'
 end
 
