@@ -16,8 +16,7 @@
 
         <div class="row">
           <div class="col-lg-4 col-lg-offset-2">
-            <!-- THIS NUMBER IS A LIE.  NEED TO GET ARTWORK. -->
-            <h3 class="white">Search 100,000 works of art:</h3>
+            <h3 class="white">Search <%= @artwork.count %> works of art:</h3>
             <div class="input-group">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Search</button>
@@ -26,7 +25,6 @@
             </div><!-- /input-group -->
           </div><!-- /.col-lg-6 -->
           <div class="col-lg-4">
-            <!-- THIS IS ALSO A LIE.  I AM SILL WORKING THIS OUT. -->
              <h3 class="white">Search by an image:</h3>
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">

@@ -66,13 +66,19 @@ class MuseumStuff
 end
 
 test_artwork = MuseumStuff.new
-ap test_artwork.get_items_on_display[:objects][0].each do |k, v|
-	ap test_artwork.get_items_on_display[:objects][0][k][:title]
+test_images = Artwork.new
+# ap test_artwork.get_items_on_display[:objects][0].each do |k, v|
+# 	ap test_artwork.get_items_on_display[:objects][0][k][:title]
+# end
+@artworks = []
+test_artwork.get_pictures["images"][0].each do |k, v|
+	@artworks << test_artwork.get_pictures["images"][0][k]["url"]
 end
 
-test_artwork.get_pictures["images"][0].each do |k, v|
-	ap test_artwork.get_pictures["images"][0][k]["url"]
+@artworks.each do |artwork|
+	test_images.avatar_remote_url(artwork)
 end
+# test_artwork.avatar_remote_url()
 
 # curl -X GET 'https://api.collection.cooperhewitt.org/rest/?
 # method=cooperhewitt.objects.getImages&

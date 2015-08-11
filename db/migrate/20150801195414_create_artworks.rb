@@ -5,6 +5,7 @@ class CreateArtworks < ActiveRecord::Migration
   		t.string :source
   		t.string :date
       t.string :img_url
+      t.string :image
   		t.references :artist, index: true
   		t.references :museum, index: true
 
