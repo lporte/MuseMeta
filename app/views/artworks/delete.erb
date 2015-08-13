@@ -1,0 +1,8 @@
+<!-- Note: Users should not be able to delete or modify artworks so this is probably not necessary -->
+
+<form action="/artworks/<%= @artwork.id %>" method="post">
+    <input type="hidden", name="_method", value="delete">
+    <input type="submit" value="Delete Artwork" class="button">
+</form>
+
+<a href="/artworks">Back</a>

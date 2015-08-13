@@ -1,0 +1,10 @@
+<h1>Are you sure you want to delete your account 4evs???</h1>
+
+<!-- Delete button -->
+<form action="/users/<%= @user.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <input type="submit" value="Yeah I'm Sure, Dammit" class="button">
+</form>
+
+<!-- Back Button -->
+<a href="/users/<%= @user.id %>" class="button">I Change My Mind!  Take me back!!</a>
