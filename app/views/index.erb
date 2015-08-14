@@ -17,15 +17,16 @@
             <!-- end search -->
 
           </div><!-- /.col-lg-6 -->
-          <div class="col-md-6 col-md-offset-3 center">
-             <h3 class="white">Search by an image:</h3>
-             <form action="/image_search" method="POST" enctype="multipart/form-data">
-                <input class="btn btn-default" type="file" name="file">
-                <input class="btn btn-warning" type="submit" value="Upload image">
-            </form>
-           
-          </div><!-- /.col-lg-4 -->
+          <!-- search -->
+        <div class="col-md-6 col-md-offset-3 center">
+          <h3 class="white">Search by an image:</h3>
+          <form class="navbar-form search-bar" action="/image_search" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" class="form-control" placeholder="search for...">
+            <input class="btn btn-warning" type="submit" value="Upload image">
+          </form>
         </div><!-- /.row -->
+          <!-- end search -->
+         
 
 <% else %>
 <!-- PUBLIC VIEW -->

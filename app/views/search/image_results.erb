@@ -1,2 +1,21 @@
-Images Similar to the one you input:
+<h3>Your Image Results:</h3>
 
+<h4>Original:</h4>
+<img src="<%= @image.gsub(/^public\//, "") %>">
+
+<h4>Similar:</h4>
+
+<% if @matches.nil? %>
+	<h3 class="white">No matches for you.</h3>
+<% else %>
+	<div class="row">
+	<div class="col-sm-4 ">
+		<% @matches.each do |match| %>
+    		<div class="thumbnail image-box-small">
+      			<a href="/artworks/<%= artwork_id(match) %>">
+				<img src="<%= match.gsub(/^public\//, "") %>"></a>
+			</div>
+		<% end %>
+	</div>
+	</div>
+<% end %>

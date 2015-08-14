@@ -1,12 +1,12 @@
 <div class="body-div">
 	<div class="col-md-6 col-md-offset-3" id="results">
-	<p class="white"> Your search results: </p>
+	<h3 class="white"> Your Search Results: </h3>
 
 		<% if @results.empty? %>
 			<h3>No results found!</h3>
 		<% end %>
 
-			<div class="thumbnail image-box">
+		<div class="thumbnail image-box">
 		<% @results.each do |result| %>
 		  <% result.attributes.each do |attr, val| %>
 		  	<% if attr.include?("img") %>
@@ -21,8 +21,8 @@
 		  		</p>
 			<% end %>
 		  <% end %>
+		</div>	
 		<% end %>
-			</div>	
 	
 
 	</div>

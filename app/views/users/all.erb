@@ -1,7 +1,9 @@
 <h1>All Users</h1>
+  <div class="row">
 <% @users.each do |user| %>
-  <p>
-  <img class="avatar" src="<%= user.avatar %>">
-  <a href="/users/<%= user.id %>"><%= user.username %></a>
-  </p>
+  	<div class="col-sm-4 ">
+  	<img class="avatar" src="<%= user.avatar %>">
+	<p><a href="/users/<%= user.id %>"><%= user.username %></a></p>
+  </div>
 <% end %>
+  </div>
