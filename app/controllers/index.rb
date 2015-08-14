@@ -1,5 +1,4 @@
 get '/' do
-	@artwork = Artwork.all
-	
+	@artwork = Artwork.order(:date, :asc)
 	erb :index
 end

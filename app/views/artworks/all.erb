@@ -1,20 +1,22 @@
-<h1>All Artworks</h1>
+<h1>All Artwork</h1>
+
 
 <div class="row">
 <% @artworks.each do |artwork| %>
-  <div class="col-sm-4 col-md-4">
+  <div class="col-sm-3 col-md-3-offset-3">
     <div class="thumbnail">
-      <img src="<%= artwork.img_url %>" alt="<%= artwork.id %>">
+      <a href="/artworks/<%= artwork.id %>">
+      <img src="<%= artwork.img_url %>" alt="<%= artwork.id %>"></a>
       <div class="caption">
         <h3>"<%= artwork.title %>"</h3>
-        <p>by <%= artwork.artist.name %><br>
+        <% unless artwork.artist.nil? %>
+          <p><%= artwork.artist.name %><br>
+        <% end %>
+           Medium: <%= artwork.medium %><br>
            Date: <%= artwork.date %><br>
-		   Museum:  <%= artwork.museum.name %><br>
-		</p>
-        <p><a href="#" class="btn btn-default" role="button">Edit</a> <a href="#" class="btn btn-default" role="button">Delete</a></p>
+        </p>
       </div>
     </div>
   </div>
 <% end %>
 </div>
-

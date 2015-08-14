@@ -1,11 +1,11 @@
 <% if @user == current_user %>
 
 	<h1> Your Profile Page </h1>
-	<div class="col-md-3 col-md-offset-1">
+	<div class="col-md-3 col-md-offset-3">
 		<img class="avatar img-responsive img-rounded" src="<%= @user.avatar %>"><br>
 	</div>
 
-<hr>
+
 	<div class="col-md-3 white">
 		<h4>Username: <%= @user.username %></h4>
 	    <h4>First Name: <%= @user.first_name %></h4>
@@ -21,7 +21,7 @@
 	<h1><%= @user.username %>'s Profile Page</h1>
 	<img class="avatar" src="<%= @user.avatar %>"><br>
 	<h4>First Name:<%= @user.first_name %></h4>	
-	<!-- <h4>Email: <%= @user.email %></h4>	 -->
+	<h4>Email: <%= @user.email %></h4>	
 	<h4>City: <%= @user.city %></h4>	
 	<h4>State: <%= @user.state %></h4>	
 	<h4>Bio:  <%= @user.bio %></h4>	

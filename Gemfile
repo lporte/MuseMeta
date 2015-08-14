@@ -21,6 +21,7 @@ gem 'nyan-cat-formatter'
 gem 'bcrypt'
 gem 'httparty'
 gem 'dotenv'
+gem 'phashion'
 
 group :test do
   gem 'shoulda-matchers'

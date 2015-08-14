@@ -1,8 +1,17 @@
-<h1> "<%= @artwork.title %>" Show Page</h1>
-	Artist: <%= @artwork.artist.name %><br>
-	Date: <%= @artwork.date %><br>
-	Source: <%= @artwork.source %><br>
-	Museum:  <%= @artwork.museum.name %><br>
-	<img src="<%= @artwork.img_url %>"><br>
-
-<a href="/artworks">Back</a>
+<h1> "<%= @artwork.title %>"</h1>
+	
+	<div class="col-md-6 col-md-offset-3 center">
+	<img src="http://images.metmuseum.org/CRDImages/ep/web-large/DT2144.jpg"><br>
+	<dl class="dl-horizontal white">
+  		<dt>Artist:</dt>
+  		<dd><%= @artwork.artist.name %></dd>
+  		<dt>Date:</dt>
+  		<dd><%= @artwork.date %></dd>
+  		<dt>Medium:</dt>
+  		<dd><%= @artwork.medium %></dd>
+  		<dt>Source:</dt>
+  		<dd><a href="<%= @artwork.source %>"><%= @artwork.source %></a></dd>
+  		<dt>Location</dt>
+  		<dd>The Met</dd>
+	</dl>
+	</div>

@@ -85,52 +85,53 @@
 # method=cooperhewitt.objects.getImages&
 # access_token=8983a6ba36768682cfcda354deb415e2&
 # object_id=18667413'
-class MetMuseum
-	include HTTParty
 
-	base_uri 'scrapi.org/search'
-	def get_artwork
-		response = self.class.get('/American+Painting?fields=title,primaryArtistNameOnly,primaryImageUrl,medium')
-	end
-end
+# class MetMuseum
+# 	include HTTParty
 
-test = MetMuseum.new
+# 	base_uri 'scrapi.org/search'
+# 	def get_artwork
+# 		response = self.class.get('/oil+paintings?fields=title,primaryArtistNameOnly,primaryImageUrl,medium')
+# 	end
+# end
 
-title = ""
-source = ""
-medium = ""
-date = ""
-img_url = ""
-artist_id = ""
+# test = MetMuseum.new
 
-test.get_artwork["collection"]["items"].each do |item|
-	item.each do |k, v|
+# title = ""
+# source = ""
+# medium = ""
+# date = ""
+# img_url = ""
+# artist_id = ""
 
-		title = v if k == "title"
-		source = v if k == "website_href"
-		medium = v if k == "medium"
-		date = v if k == "dateText"
-		img_url = v if k == "image_thumb"
-		artist_id = Artist.find_by(name: v).id if k == "primaryArtistNameOnly"
+# test.get_artwork["collection"]["items"].each do |item|
+# 	item.each do |k, v|
 
-		# if k == "primaryArtistNameOnly"
-		# 	if Artist.find_by(name: v).nil?
-		# 		@artist = Artist.create(name: v)
-		# 	else
-		# 		@artist = Artist.find_by(name: v)
-		# 	end
-		# end
-	end
+# 		title = v if k == "title"
+# 		source = v if k == "website_href"
+# 		medium = v if k == "medium"
+# 		date = v if k == "dateText"
+# 		img_url = v if k == "image_thumb"
+# 		artist_id = Artist.find_by(name: v).id if k == "primaryArtistNameOnly"
 
-	Artwork.create(
-			title: title, 
-			source: source,
-			medium: medium,
-			date: date,
-			img_url: img_url,
-			artist_id: artist_id
-	)
-end
+# 		# if k == "primaryArtistNameOnly"
+# 		# 	if Artist.find_by(name: v).nil?
+# 		# 		@artist = Artist.create(name: v)
+# 		# 	else
+# 		# 		@artist = Artist.find_by(name: v)
+# 		# 	end
+# 		# end
+# 	end
+
+# 	Artwork.create(
+# 			title: title, 
+# 			source: source,
+# 			medium: medium,
+# 			date: date,
+# 			img_url: img_url,
+# 			artist_id: artist_id
+# 	)
+# end
 
 # Psudeocode:
 # images should be saved in image folder with the artwork id + title as its name
@@ -147,9 +148,10 @@ end
 
 # cat_name = [ "ruby" , "rubert" , "rubensin"]
 
-# cat_urls.each_with_index do |cat_url, i|
-# 	`wget -O images/ #{cat_name[i]}.jpg #{cat_url}`
-# end
+
+Artwork.all.each do |art|
+	`wget -P public/images/ #{art.img_url}`
+end
 
 
 
