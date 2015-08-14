@@ -1,11 +1,12 @@
 /*GENERAL STYLE*/
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 body { 
-  background: linear-gradient(rgba(0, 4, 49, 0.6), rgba(0, 0, 0, 0.6)), url(../images/infinity.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: #AAB3AB;
 }
 
 h1 {
@@ -20,6 +21,15 @@ h2 {
 
 p {
   margin-top: 20px;
+}
+
+.splash {
+  overflow: auto;
+  background: linear-gradient(rgba(0, 4, 49, 0.6), rgba(0, 0, 0, 0.6)), url('http://i.imgur.com/q7C56bF.gif') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .avatar {
@@ -95,7 +105,7 @@ a:hover {
 .flip .card .front {
     position: absolute;
     z-index: 1;
-    background-color: rgba(128, 128, 128, 0.87);
+    background-color: #C4CBB7;
     border-radius: 25px;
     padding: 23px;
     color: white;
@@ -103,7 +113,7 @@ a:hover {
 }
 .flip .card .back {
     -webkit-transform: rotatey(-180deg);
-    background-color: rgba(128, 128, 128, 0.87);
+    background-color: #C4CBB7;
     border-radius: 25px;
     padding: 23px;
     cursor: pointer;
