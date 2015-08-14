@@ -34,64 +34,122 @@
 # end
 
 # 10.times do 
-# 	Relationship.create(artist_id: rand(1..10), 
+# 	Relationship.create(
+# 		artist_id: rand(1..10), 
 # 		museum_id: rand(1..10))
 # end
 
 # TO DO:  SEED DATABASE
-class MuseumStuff
-	include HTTParty
+# class MuseumStuff
+# 	include HTTParty
 
-	base_uri 'https://api.collection.cooperhewitt.org/rest/'
+# 	base_uri 'https://api.collection.cooperhewitt.org/rest/'
 
-	def get_pictures 
-		response = self.class.get("/",
-			:query => { 
-				:method => "cooperhewitt.objects.getImages",
-				:access_token => ENV["ACCESS_TOKEN"],
-				:object_id => "18667413" 
-			}
-		)
-	end
+# 	def get_pictures 
+# 		response = self.class.get("/",
+# 			:query => { 
+# 				:method => "cooperhewitt.objects.getImages",
+# 				:access_token => ENV["ACCESS_TOKEN"],
+# 				:object_id => "18667413" 
+# 			}
+# 		)
+# 	end
 
-	def get_items_on_display
-		response = self.class.get("/",
-			:query => {
-				:method => "cooperhewitt.objects.getOnDisplay",
-				:access_token => ENV["ACCESS_TOKEN"],
-			}
-		)
-	end
+# 	def get_items_on_display
+# 		response = self.class.get("/",
+# 			:query => {
+# 				:method => "cooperhewitt.objects.getOnDisplay",
+# 				:access_token => ENV["ACCESS_TOKEN"],
+# 			}
+# 		)
+# 	end
 
-end
+# end
 
-test_artwork = MuseumStuff.new
-test_images = Artwork.new
+# test_artwork = MuseumStuff.new
+# test_images = Artwork.new
 # ap test_artwork.get_items_on_display[:objects][0].each do |k, v|
 # 	ap test_artwork.get_items_on_display[:objects][0][k][:title]
 # end
-@artworks = []
-test_artwork.get_pictures["images"][0].each do |k, v|
-	@artworks << test_artwork.get_pictures["images"][0][k]["url"]
-end
+# @artworks = []
+# test_artwork.get_pictures["images"][0].each do |k, v|
+# 	@artworks << test_artwork.get_pictures["images"][0][k]["url"]
+# end
 
-@artworks.each do |artwork|
-	test_images.avatar_remote_url(artwork)
-end
+# @artworks.each do |artwork|
+# 	test_images.avatar_remote_url(artwork)
+# end
 # test_artwork.avatar_remote_url()
 
 # curl -X GET 'https://api.collection.cooperhewitt.org/rest/?
 # method=cooperhewitt.objects.getImages&
 # access_token=8983a6ba36768682cfcda354deb415e2&
 # object_id=18667413'
-# class MetMuseum
-# 	include HTTParty
+class MetMuseum
+	include HTTParty
 
-# 	base_uri 'scrapi.org'
-# 	def get_artwork
-# 		response = self.class.get('/object/123?fields=title,whoList/who/name')
-# 	end
+	base_uri 'scrapi.org/search'
+	def get_artwork
+		response = self.class.get('/American+Painting?fields=title,primaryArtistNameOnly,primaryImageUrl,medium')
+	end
+end
+
+test = MetMuseum.new
+
+title = ""
+source = ""
+medium = ""
+date = ""
+img_url = ""
+artist_id = ""
+
+test.get_artwork["collection"]["items"].each do |item|
+	item.each do |k, v|
+
+		title = v if k == "title"
+		source = v if k == "website_href"
+		medium = v if k == "medium"
+		date = v if k == "dateText"
+		img_url = v if k == "image_thumb"
+		artist_id = Artist.find_by(name: v).id if k == "primaryArtistNameOnly"
+
+		# if k == "primaryArtistNameOnly"
+		# 	if Artist.find_by(name: v).nil?
+		# 		@artist = Artist.create(name: v)
+		# 	else
+		# 		@artist = Artist.find_by(name: v)
+		# 	end
+		# end
+	end
+
+	Artwork.create(
+			title: title, 
+			source: source,
+			medium: medium,
+			date: date,
+			img_url: img_url,
+			artist_id: artist_id
+	)
+end
+
+# Psudeocode:
+# images should be saved in image folder with the artwork id + title as its name
+# Create new Artwork object with the following attr:  
+  # title, source (website url), medium, date, img url, artist_id
+# Create a new Artist object with the following attr:  
+  #  name, bio
+
+# Create a new Museum object for the Met...
+
+# cat_urls = ['http://dreamatico.com/data_images/kitten/kitten-2.jpg',
+#  		'http://s3.amazonaws.com/rapgenius/cats-animals-kittens-background.jpg', 
+#  		'http://frenchpresspodcast.com/wp-content/uploads/2015/02/cute-kitten-is-leighton.jpg']
+
+# cat_name = [ "ruby" , "rubert" , "rubensin"]
+
+# cat_urls.each_with_index do |cat_url, i|
+# 	`wget -O images/ #{cat_name[i]}.jpg #{cat_url}`
 # end
 
-# test = MetMuseum.new
-# ap test.get_artwork
+
+
