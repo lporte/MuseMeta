@@ -25,7 +25,6 @@ require 'bcrypt'
 require 'httparty'
 require 'dotenv'
 require 'awesome_print'
-require 'paperclip'
 
 # Loads your env variables - need before app loads
 Dotenv.load

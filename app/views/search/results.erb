@@ -1,17 +1,21 @@
 <div class="body-div">
 	<ul class="list-group col-xs-6 col-xs-offset-3" id="results">
 	<p class="white"> Your search results: </p>
-	<% @results.each do |result| %>
-	  <% result.attributes.each do |attr, val| %>
-	  	<% if attr.include?("img") %>
-	  	  <img src="<%= val %>" >
-	  	<% end %>
-	  	<p class="white">'<%= attr %>: <%= val %>'</p>
-		<% end %>
-	<% end %>
 
-	<% if @results.nil? %>
-		<h3>No results found.</h3>
-	<% end %>
+		<% if @results.empty? %>
+			<h3 class="white">No results found!</h3>
+		<% end %>
+
+		<% @results.each do |result| %>
+		  <% result.attributes.each do |attr, val| %>
+		  	<% if attr.include?("img") %>
+		  	  <img src="<%= val %>" >
+		  	<% end %>
+		  	<% unless attr.include?("password") || attr.include?("_at") %>
+		  		<p class="white">'<%= attr %>: <%= val %>'</p>
+				<% end %>
+			<% end %>
+		<% end %>
 		</ul>
+
 </div>

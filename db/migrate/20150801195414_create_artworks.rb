@@ -2,10 +2,10 @@ class CreateArtworks < ActiveRecord::Migration
   def change
   	create_table :artworks do |t|
   		t.string :title
-  		t.string :source
+      t.string :source
+  		t.string :medium
   		t.string :date
       t.string :img_url
-      t.string :image
   		t.references :artist, index: true
   		t.references :museum, index: true
 
