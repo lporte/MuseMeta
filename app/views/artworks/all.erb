@@ -1,10 +1,9 @@
 <h1>All Artwork</h1>
 
-
 <div class="row">
 <% @artworks.each do |artwork| %>
-  <div class="col-sm-3 col-md-3-offset-3">
-    <div class="thumbnail">
+  <div class="col-sm-3 col-md-3-offset-3 ">
+    <div class="thumbnail image-box">
       <a href="/artworks/<%= artwork.id %>">
       <img src="<%= artwork.img_url %>" alt="<%= artwork.id %>"></a>
       <div class="caption">

@@ -32,6 +32,18 @@ p {
   background-size: cover;
 }
 
+.image-box {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 400px;
+}
+
+.splash-box {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 800px;
+}
+
 .avatar {
   max-height: 140px;
   margin: 25px;

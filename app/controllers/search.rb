@@ -20,17 +20,17 @@ end
 #--------------------REVERSE IMAGE SEARCH BAR
 
 post "/image_search" do
-  image_file = params[:image]
+	@filename = params[:file][:filename]
+	  p "BEFORE*" * 100
+	  p @filename
+	  file = params[:file][:tempfile]
+
+	  File.open('public/images/' + params[:file][:filename], "wb") do |f|
+	    f.write(params[:file][:tempfile].read)
+	  end 
   erb :'search/image_results'
 end
 
 get '/image_search/results_for' do
-  @filename = params[:file][:filename]
-  file = params[:file][:tempfile]
-
-  File.open("../public/images/#{@filename}", 'wb') do |f|
-    f.write(file.read)
-  end
-  
-  erb :image_results
+  p "BECAUSE I DON'T KNOW"
 end
