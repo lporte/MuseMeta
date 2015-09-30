@@ -136,9 +136,9 @@
 # Psudeocode:
 # images should be saved in image folder with the artwork id + title as its name
 # Create new Artwork object with the following attr:  
-  # title, source (website url), medium, date, img url, artist_id
+#   title, source (website url), medium, date, img url, artist_id
 # Create a new Artist object with the following attr:  
-  #  name, bio
+#    name, bio
 
 # Create a new Museum object for the Met...
 
@@ -149,9 +149,9 @@
 # cat_name = [ "ruby" , "rubert" , "rubensin"]
 
 
-Artwork.all.each do |art|
-	`wget -P public/images/ #{art.img_url}`
-end
+# Artwork.all.each do |art|
+# 	`wget -P public/images/ #{art.img_url}`
+# end
 
 
 
