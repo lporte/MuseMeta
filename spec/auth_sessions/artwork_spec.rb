@@ -18,11 +18,8 @@ describe "Artwork Controller" do
     end
 
     it "creates a new url" do
-      #given
       count_before = Artwork.count
-      #when
       post "/artworks", {title: "Les Demoiselles d'Avignon", source: "Lourve", date: "1907", image: "http://www.arthistoryarchive.com/arthistory/cubism/images/PabloPicasso-Les-Demoiselles-dAvignon-1907.jpg" }
-      #then
       count_after = Artwork.count
       expect(count_after).to be(count_before +1)
     end
