@@ -1,16 +1,16 @@
-# 10.times do 
-# 	user = User.create(
-# 		username: Faker::Name.name,
-# 		password: Faker::Internet.password(6),
-# 		first_name: Faker::Name.first_name,
-# 		last_name: Faker::Name.last_name,
-# 		email: Faker::Internet.email,
-# 		city: Faker::Address.city,
-# 		state: Faker::Address.state,
-# 		bio: Faker::Company.catch_phrase,
-# 		avatar: Faker::Avatar.image
-# 	)
-# end
+10.times do 
+	user = User.create(
+		username: Faker::Name.name,
+		password: Faker::Internet.password(6),
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		email: Faker::Internet.email,
+		city: Faker::Address.city,
+		state: Faker::Address.state,
+		bio: Faker::Company.catch_phrase,
+		avatar: Faker::Avatar.image
+	)
+end
 
 # 10.times do
 # 	Artwork.create(
@@ -86,52 +86,52 @@
 # access_token=8983a6ba36768682cfcda354deb415e2&
 # object_id=18667413'
 
-# class MetMuseum
-# 	include HTTParty
+class MetMuseum
+	include HTTParty
 
-# 	base_uri 'scrapi.org/search'
-# 	def get_artwork
-# 		response = self.class.get('/oil+paintings?fields=title,primaryArtistNameOnly,primaryImageUrl,medium')
-# 	end
-# end
+	base_uri 'scrapi.org/search'
+	def get_artwork
+		response = self.class.get('/modern+art?fields=title,primaryArtistNameOnly,primaryImageUrl,medium')
+	end
+end
 
-# test = MetMuseum.new
+test = MetMuseum.new
 
-# title = ""
-# source = ""
-# medium = ""
-# date = ""
-# img_url = ""
-# artist_id = ""
+title = ""
+source = ""
+medium = ""
+date = ""
+img_url = ""
+artist_id = ""
 
-# test.get_artwork["collection"]["items"].each do |item|
-# 	item.each do |k, v|
+test.get_artwork["collection"]["items"].each do |item|
+	item.each do |k, v|
 
-# 		title = v if k == "title"
-# 		source = v if k == "website_href"
-# 		medium = v if k == "medium"
-# 		date = v if k == "dateText"
-# 		img_url = v if k == "image_thumb"
-# 		artist_id = Artist.find_by(name: v).id if k == "primaryArtistNameOnly"
+		title = v if k == "title"
+		source = v if k == "website_href"
+		medium = v if k == "medium"
+		date = v if k == "dateText"
+		img_url = v if k == "image_thumb"
+		artist_id = Artist.find_by(name: v).id if k == "primaryArtistNameOnly"
 
-# 		# if k == "primaryArtistNameOnly"
-# 		# 	if Artist.find_by(name: v).nil?
-# 		# 		@artist = Artist.create(name: v)
-# 		# 	else
-# 		# 		@artist = Artist.find_by(name: v)
-# 		# 	end
-# 		# end
-# 	end
+		# if k == "primaryArtistNameOnly"
+		# 	if Artist.find_by(name: v).nil?
+		# 		@artist = Artist.create(name: v)
+		# 	else
+		# 		@artist = Artist.find_by(name: v)
+		# 	end
+		# end
+	end
 
-# 	Artwork.create(
-# 			title: title, 
-# 			source: source,
-# 			medium: medium,
-# 			date: date,
-# 			img_url: img_url,
-# 			artist_id: artist_id
-# 	)
-# end
+	Artwork.create(
+			title: title, 
+			source: source,
+			medium: medium,
+			date: date,
+			img_url: img_url,
+			artist_id: artist_id
+	)
+end
 
 # Psudeocode:
 # images should be saved in image folder with the artwork id + title as its name
@@ -150,7 +150,7 @@
 
 
 Artwork.all.each do |art|
-	`wget -P public/images/ #{art.img_url}`
+	`wget -P public/images/#{art.img_url}`
 end
 
 
