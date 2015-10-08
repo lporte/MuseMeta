@@ -1,8 +1,19 @@
+
 <div class="splash splash-box">
 <% if logged_in? %>
 <!-- PRIVATE VIEW -->
 <!-- OR button sign out  -->
-	<h1 class="main">Welcome Back, <%= current_user.username %></h1>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+            <h1 class="main">Welcome Back, <%= current_user.username %></h1>
+                 <h2 class="white center">Browse the Collection Here!</h2>
+            </div>
+        </div>
+
+        <hr>
+
 
         <div class="row">
           <div class="col-md-6 col-md-offset-3 center">
@@ -28,16 +39,26 @@
           <!-- end search -->
          
 
+
+
 <% else %>
 <!-- PUBLIC VIEW -->
 <!-- button login/sign up -->
-	<h1 class="main">MuseMeta</h1>
+    <!-- Page Content -->
+    <div class="container">
 
-	<div class="col-md-6 col-md-offset-3 center">
-        <h3 class="white">A tiny museum database</h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>MuseMeta</h1>
+                <h2 class="white center">A Mini Reverse Image Search Engine</h2>
+            </div>
+        </div>
+
+        <hr>
+
     </div>
     
-		<div class="col-md-6 col-md-offset-3 center">
+        <div class="col-md-6 col-md-offset-3 center">
        
         <div id="js-flip" class="flip">
             <div class="card">
@@ -101,4 +122,10 @@
     </div>
 
 <% end %>
-</div>
+
+
+
+
+    </div>
+    </div>
+    </div>

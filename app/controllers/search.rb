@@ -9,10 +9,6 @@ get '/search/results_for/:search_request' do
   @artists = Artist.search(@query) 
   @artworks = Artist.assoc_artworks(@query) 
   @artwork = Artwork.search(@query) 
-             
-  p @results
-  p "*"*100
-  erb :"search/results"
 end
 
 #--------------------REVERSE IMAGE SEARCH BAR

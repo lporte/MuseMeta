@@ -22,8 +22,13 @@ helpers do
 		return @matches
 	end
 
-	def artwork_id(url)
-		@img_name = url.gsub(/^public\/images\//, "")
-		@artwork = Artwork.where('img_url LIKE ?', '%#{@img_name}%')
+	def image_finder(url)
+		img_name = url.gsub(/^public\/images\//, "")
+		p img_name
+		@artwork = Artwork.where('img_url like ?', '%#{img_name}%').first
+		p @artwork
+		p "*"* 100
 	end
+
+
 end

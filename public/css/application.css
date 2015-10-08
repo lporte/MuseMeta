@@ -23,6 +23,10 @@ p {
   margin-top: 20px;
 }
 
+.navbar {
+  margin-bottom: 0px;
+}
+
 .splash {
   overflow: auto;
   background: linear-gradient(rgba(0, 4, 49, 0.6), rgba(0, 0, 0, 0.6)), url('http://i.imgur.com/q7C56bF.gif') no-repeat center center fixed; 
@@ -30,6 +34,7 @@ p {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  width: 101%;
 }
 
 .image-box {
@@ -218,6 +223,10 @@ a:hover {
 .results img {
   height: 300px;
   width: 600px;
+  margin-bottom: 20px;
+}
+
+.img_results img {
   margin-bottom: 20px;
 }
 
