@@ -24,7 +24,6 @@ require 'pry'
 require 'bcrypt'
 require 'httparty'
 require 'dotenv'
-require 'awesome_print'
 
 # Loads your env variables - need before app loads
 Dotenv.load
