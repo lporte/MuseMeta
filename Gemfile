@@ -32,7 +32,6 @@ group :test do
 end
 
 group :test, :development do
-  gem 'awesome_print'
   gem 'factory_girl'
   gem 'faker'
 end
