@@ -130,7 +130,7 @@ test.get_artwork["collection"]["items"].each do |item|
 	# 		date: date,
 	# 		img_url: img_url,
 	# 		artist_id: artist_id
-	)
+	# )
 end
 
 # Psudeocode:
