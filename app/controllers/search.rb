@@ -5,15 +5,13 @@ post '/search' do
 end
 
 get '/search/results_for/:search_request' do
-  @search_request = params[:search_request]
-  @results = (
-		search_artwork(@search_request) + 
-		search_title(@search_request) + 
-		search_museum(@search_request) + 
-		search_username(@search_request) + 
-		search_artist(@search_request) 
-		).uniq
-  @attr_array  = [] 
+  @query = params[:search_request]
+  @artists = Artist.search(@query) 
+  @artworks = Artist.assoc_artworks(@query) 
+  @artwork = Artwork.search(@query) 
+             
+  p @results
+  p "*"*100
   erb :"search/results"
 end
 
@@ -28,12 +26,9 @@ post "/image_search" do
 
   @image = "public/images/#{@filename}"
   @matches = image_matches(@image)
-  p @matches
-  p "*"*100
 
   erb :'search/image_results'
 end
 
 get '/image_search/results_for' do
-  p "BECAUSE I DON'T KNOW"
 end

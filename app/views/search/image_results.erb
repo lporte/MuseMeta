@@ -1,21 +1,42 @@
-<h3>Your Image Results:</h3>
+<div class="container">
 
-<h4>Original:</h4>
-<img src="<%= @image.gsub(/^public\//, "") %>">
+<!-- Portfolio Item Row -->
+        <div class="row">
 
-<h4>Similar:</h4>
+            <div class="col-md-8">
+				<img class="img-responsive" src="<%= @image.gsub(/^public\//, "") %>">
+            </div>
 
-<% if @matches.nil? %>
-	<h3 class="white">No matches for you.</h3>
-<% else %>
+            <div class="col-md-4">
+                <h2>Your Image Results:</h2>
+			<% if @matches.nil? %>
+				<h3 class="white">No art for you!</h3>
+			<% else %>
+                <h3><%= @matches.count %> Pieces Found!</h3>
+            </div>
+
+        </div>
+<!-- /.row -->
+
+
 	<div class="row">
-	<div class="col-sm-4 ">
-		<% @matches.each do |match| %>
-    		<div class="thumbnail image-box-small">
-      			<a href="/artworks/<%= artwork_id(match) %>">
-				<img src="<%= match.gsub(/^public\//, "") %>"></a>
-			</div>
+			<% @matches.each do |match| %>
+			<div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="/artworks/<%= artwork_id(match) %>" class="portfolio-link" >
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                        </div>
+                    </div>
+                   	<img src="<%= match.gsub(/^public\//, "") %>">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Mario's World by Grace Hops</h4>
+                    <p class="text-muted">Scene at Cronenbook</p>
+                </div>
+            </div>
 		<% end %>
-	</div>
+
+
 	</div>
 <% end %>
+</div>

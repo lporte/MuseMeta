@@ -23,7 +23,7 @@ helpers do
 	end
 
 	def artwork_id(url)
-		img_name = url.gsub(/^public\/images\//, "")
-		@artwork = Artwork.find_by(img_url: img_name )
+		@img_name = url.gsub(/^public\/images\//, "")
+		@artwork = Artwork.where('img_url LIKE ?', '%#{@img_name}%')
 	end
 end

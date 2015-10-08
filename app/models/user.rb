@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
       user if user && user.password == password
     end
 
+    def self.search(query)
+      where("username like ? OR email like ?", "%#{query}%", "%#{query}%")
+    end
+
 end
