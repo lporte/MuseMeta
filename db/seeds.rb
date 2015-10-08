@@ -1,16 +1,16 @@
-10.times do 
-	user = User.create(
-		username: Faker::Name.name,
-		password: Faker::Internet.password(6),
-		first_name: Faker::Name.first_name,
-		last_name: Faker::Name.last_name,
-		email: Faker::Internet.email,
-		city: Faker::Address.city,
-		state: Faker::Address.state,
-		bio: Faker::Company.catch_phrase,
-		avatar: Faker::Avatar.image
-	)
-end
+# 10.times do 
+# 	user = User.create(
+# 		username: Faker::Name.name,
+# 		password: Faker::Internet.password(6),
+# 		first_name: Faker::Name.first_name,
+# 		last_name: Faker::Name.last_name,
+# 		email: Faker::Internet.email,
+# 		city: Faker::Address.city,
+# 		state: Faker::Address.state,
+# 		bio: Faker::Company.catch_phrase,
+# 		avatar: Faker::Avatar.image
+# 	)
+# end
 
 # 10.times do
 # 	Artwork.create(
@@ -107,30 +107,30 @@ artist_id = ""
 test.get_artwork["collection"]["items"].each do |item|
 	item.each do |k, v|
 
-		# title = v if k == "title"
-		# source = v if k == "website_href"
-		# medium = v if k == "medium"
-		# date = v if k == "dateText"
-		# img_url = v if k == "image_thumb"
-		# artist_id = Artist.find_by(name: v).id if k == "primaryArtistNameOnly"
+		title = v if k == "title"
+		source = v if k == "website_href"
+		medium = v if k == "medium"
+		date = v if k == "dateText"
+		img_url = v if k == "image_thumb"
+		artist_id = Artist.find_by(name: v).id if k == "primaryArtistNameOnly"
 
-		if k == "primaryArtistNameOnly"
-			if Artist.find_by(name: v).nil?
-				@artist = Artist.create(name: v)
-			else
-				@artist = Artist.find_by(name: v)
-			end
-		end
+		# if k == "primaryArtistNameOnly"
+		# 	if Artist.find_by(name: v).nil?
+		# 		@artist = Artist.create(name: v)
+		# 	else
+		# 		@artist = Artist.find_by(name: v)
+		# 	end
+		# end
 	end
 
-	# Artwork.create(
-	# 		title: title, 
-	# 		source: source,
-	# 		medium: medium,
-	# 		date: date,
-	# 		img_url: img_url,
-	# 		artist_id: artist_id
-	# )
+	Artwork.create(
+			title: title, 
+			source: source,
+			medium: medium,
+			date: date,
+			img_url: img_url,
+			artist_id: artist_id
+	)
 end
 
 # Psudeocode:
