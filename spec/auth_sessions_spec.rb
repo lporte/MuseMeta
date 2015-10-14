@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require_relative '/spec_helper'
 
 describe "User Controller" do
 
@@ -18,11 +18,8 @@ describe "User Controller" do
     end
 
     it "creates a new user in the db" do
-      #given
       count_before = User.count
-      #when
       post "/users", {username: "Steve", password: "ForURHealth" }
-      #then
       count_after = User.count
       expect(count_after).to be(count_before + 1)
     end

@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require_relative '/spec_helper'
 
 describe "Artwork Controller" do
 
@@ -24,5 +24,7 @@ describe "Artwork Controller" do
       expect(count_after).to be(count_before +1)
     end
   end
+
+  describe ''
 
 end
