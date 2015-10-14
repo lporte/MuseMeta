@@ -1,17 +1,17 @@
 get '/users' do
-    @users = User.all.reverse_order
+  @users = User.all.reverse_order
 
-    erb :'users/all'
+  erb :'users/all'
 end
 
 #----------------CREATE/SIGNUP-------------
 get '/users/new' do
-    @user = User.new
-    erb :'users/new'
+  @user = User.new
+  erb :'users/new'
 end
 
 post '/users' do
-    @user = User.new(username: params[:username],
+  @user = User.new(username: params[:username],
     password: params[:password_hash0],
     email: params[:email],
     first_name: params[:first_name],
@@ -21,21 +21,21 @@ post '/users' do
     bio: params[:bio],
     avatar: params[:avatar_url]
     )
-    if params[:password_hash0] == params[:password_hash1] && @user.save
-      login(@user)
-      redirect "/users/#{@user.id}"
-    else
-      @error = "Could not authenticate information.  Try again."
-      erb :index
-    end
+  if params[:password_hash0] == params[:password_hash1] && @user.save
+    login(@user)
+    redirect "/users/#{@user.id}"
+  else
+    @error = "Could not authenticate information.  Try again."
+    erb :index
+  end
 end
 
 #-------------------READ-------------------
 
 get '/users/:id' do
-	@user = User.find(params[:id])
+  @user = User.find(params[:id])
 
-	erb :'users/show'
+  erb :'users/show'
 end
 
 #------------------UPDATE------------------
