@@ -1,7 +1,7 @@
 #----------------SHOW ALL-----------------
 
 get '/artworks' do
-	@artworks = Artwork.all.order(id: :asc)
+    @artworks = Artwork.all.order(id: :asc)
 	if logged_in?
 		erb :'artworks/all'
 	else
