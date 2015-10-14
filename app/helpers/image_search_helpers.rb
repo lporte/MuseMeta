@@ -13,8 +13,6 @@ helpers do
 		
 		all_images.each do |dir_img|
 			img2 = Phashion::Image.new(dir_img)
-			if img1.duplicate?(img2) 
-				@matches << dir_img
 			elsif img1.distance_from(img2) <= 15
 				@matches << dir_img
 			end
@@ -24,10 +22,7 @@ helpers do
 
 	def image_finder(url)
 		img_name = url.gsub(/^public\/images\//, "")
-		p img_name
 		@artwork = Artwork.where('img_url like ?', '%#{img_name}%').first
-		p @artwork
-		p "*"* 100
 	end
 
 
