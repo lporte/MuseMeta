@@ -1,7 +1,8 @@
 #--------------------SEARCH BAR
+
 post '/search' do
-	search_request = params[:search_request]
-	redirect "/search/results_for/#{params[:search_request]}"
+  search_request = params[:search_request]
+  redirect "/search/results_for/#{params[:search_request]}"
 end
 
 get '/search/results_for/:search_request' do
